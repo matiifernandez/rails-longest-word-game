@@ -31,10 +31,10 @@ class GamesController < ApplicationController
       session[:total_score] ||= 0
       session[:total_score] += @current_game_score
       @message = "CONGRATULATIONS! 🎉 #{answer.upcase} is a valid English word!"
-    elsif !can_be_build
-      @message = "Sorry but #{answer.upcase} can't be built out of the given letters: #{@letters.join(' - ')}."
-    else
+    elsif english_word == false
       @message = "Sorry but #{answer.upcase} does not seem to be a valid English word."
+    else
+      @message = "Sorry but #{answer.upcase} can't be built out of the given letters: #{@letters.join(' - ')}."
     end
     @total_score = session[:total_score]
   end
