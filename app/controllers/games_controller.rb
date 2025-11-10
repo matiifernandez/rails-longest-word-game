@@ -7,6 +7,7 @@ class GamesController < ApplicationController
     10.times do
       @letters << alphabet.sample
     end
+    session[:total_score] ||= 0
   end
 
   def score
@@ -26,12 +27,15 @@ class GamesController < ApplicationController
       end
     end
     if english_word && can_be_build
-      @score = answer.length * 100
+      @current_game_score = answer.length * 100
+      session[:total_score] ||= 0
+      session[:total_score] += @current_game_score
       @message = "CONGRATULATIONS! 🎉 #{answer.upcase} is a valid English word!"
     elsif !can_be_build
       @message = "Sorry but #{answer.upcase} can't be built out of the given letters: #{@letters.join(' - ')}."
     else
       @message = "Sorry but #{answer.upcase} does not seem to be a valid English word."
     end
+    @total_score = session[:total_score]
   end
 end

@@ -1,7 +1,20 @@
-<div class="container m-4">
-  <h1>Result</h1>
+<div class="container my-5 text-center">
+  <h1 class="mb-4">Result</h1>
 
-  <p><%= @message %></p>
-  <p>Your score is: <%= @score %></p>
+  <div class="card p-4 mb-4 <%= @message.include?('CONGRATULATIONS') ? 'bg-success text-white' : 'bg-warning' %>">
+    <h4 class="card-title">
+      <%= @message.html_safe %>
+    </h4>
+  </div>
+  <p class="lead">
+    Your score for this game:
+    <strong class="text-primary"><%= @current_game_score %> points</strong>
+  </p>
+  <hr class="my-4">
+
+  <h3 class="display-6 mb-4">
+    🏆 Total Score:
+    <span class="badge bg-dark rounded-pill p-3"><%= @total_score %></span> points
+  </h3>
   <%= link_to "Play again", new_path, class: "btn btn-primary" %>
 </div>
