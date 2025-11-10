@@ -167,6 +167,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.18.10-x86_64-linux-musl)
       racc (~> 1.4)
+    ostruct (0.6.0)
     pp (0.6.3)
       prettyprint
     prettyprint (0.2.0)
@@ -292,6 +293,7 @@ DEPENDENCIES
   debug
   importmap-rails
   jbuilder
+  ostruct
   puma (>= 5.0)
   rails (~> 7.1.6)
   selenium-webdriver
